@@ -53,7 +53,7 @@ class Car
   {
     return _year;
   }
-  
+
   public Car(string carMakeModel, int carPrice, int carMiles, int carYear = 2010, string carColor = "black")
   {
     _makeModel = carMakeModel;
@@ -76,20 +76,33 @@ public class Program
 
     List<Car> Cars = new List<Car>() { porsche, ford, bmw, mercedes, gio };
 
-    foreach (Car automobile in Cars)
-    {
-      Console.WriteLine(automobile.GetMakeModel());
-      Console.WriteLine(automobile.GetColor());
-    }
+
+
+    // foreach (Car automobile in Cars)
+    // {
+    //   Console.WriteLine(automobile.GetMakeModel());
+    //   Console.WriteLine(automobile.GetColor());
+    //   Console.WriteLine("Price $" + automobile.GetPrice() + " +tax");
+    //   Console.WriteLine("Year: " + automobile.GetYear());
+    //
+    // }
     Console.WriteLine("Enter max price: ");
     string stringMaxPrice = Console.ReadLine();
     int maxPrice = int.Parse(stringMaxPrice);
+    Console.WriteLine("Enter Max Mileage: ");
+    string stringMaxMileage = Console.ReadLine();
+    int MaxMileage = int.Parse(stringMaxMileage);
+
+    if (maxPrice < 2000 || MaxMileage < 89)
+    {
+      Console.WriteLine("No results");
+    }
 
     List<Car> CarsMatchingSearch = new List<Car>();
 
     foreach (Car automobile in Cars)
     {
-      if (automobile.GetPrice() <= maxPrice)
+      if (automobile.GetPrice() <= maxPrice && automobile.GetMiles() <= MaxMileage)
       {
         CarsMatchingSearch.Add(automobile);
       }
