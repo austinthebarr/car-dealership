@@ -6,42 +6,35 @@ class Car
   public string MakeModel;
   public int Price;
   public int Miles;
+  public string Color;
+  public int Year;
+
+  public Car(string carMakeModel, int carPrice, int carMiles, string carColor = "black", int carYear = 2010)
+  {
+    MakeModel = carMakeModel;
+    Price = carPrice;
+    Miles = carMiles;
+    Color = carColor;
+    Year = carYear;
+  }
 }
 
 public class Program
 {
   public static void Main()
   {
-    Car porsche = new Car();
-    porsche.MakeModel = "2014 Porsche 911";
-    porsche.Price = 114991;
-    porsche.Miles = 7864;
-
-    Car ford = new Car();
-    ford.MakeModel = "2017 Ford Raptor";
-    ford.Price = 60000;
-    ford.Miles = 2500;
-
-    Car bmw = new Car();
-    bmw.MakeModel = "2012 BMW M5";
-    bmw.Price = 110000;
-    bmw.Miles = 25000;
-
-    Car mercedes = new Car();
-    mercedes.MakeModel = "2013 Mercedes AMG";
-    mercedes.Price = 120000;
-    mercedes.Miles = 32000;
-
-    Car gio = new Car();
-    gio.MakeModel = "1992 Gio Storm";
-    gio.Price = 4000;
-    gio.Miles = 132000;
+    Car porsche = new Car("Porsche 911", 114991, 7864 );
+    Car ford = new Car("Ford Raptor", 60000, 2500);
+    Car bmw = new Car("BMW M5", 110000, 25000);
+    Car mercedes = new Car("Mercedes AMG", 120000, 32000);
+    Car gio = new Car("Gio Storm", 2000, 89, "white", 1999);
 
     List<Car> Cars = new List<Car>() { porsche, ford, bmw, mercedes, gio };
 
     foreach (Car automobile in Cars)
     {
       Console.WriteLine(automobile.MakeModel);
+      Console.WriteLine(automobile.Color);
     }
     Console.WriteLine("Enter max price: ");
     string stringMaxPrice = Console.ReadLine();
@@ -51,7 +44,7 @@ public class Program
 
     foreach (Car automobile in Cars)
     {
-      if (automobile.Price < maxPrice)
+      if (automobile.Price <= maxPrice)
       {
         CarsMatchingSearch.Add(automobile);
       }
@@ -59,6 +52,7 @@ public class Program
     foreach (Car automobile in CarsMatchingSearch)
     {
       Console.WriteLine(automobile.MakeModel);
+      Console.WriteLine(automobile.Color);
     }
   }
 
